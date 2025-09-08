@@ -34,7 +34,7 @@ public class Example02Controller {
         repository.save(member); // member의 데이터를 테이블에 저장함
         return "redirect:/exam02"; // 삽입된 데이터 출력
     }
-
+    
     @GetMapping("/edit/{id}")
     public String editMethod(@PathVariable(name = "id") int id, Model model){
         // select * from member where id = 1
