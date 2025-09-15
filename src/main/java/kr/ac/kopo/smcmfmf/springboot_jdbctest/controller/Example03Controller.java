@@ -31,4 +31,23 @@ public class Example03Controller {
         repository.insertMethod(member.getName(), member.getAge(), member.getEmail());
         return "redirect:/exam03";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editMethod(@PathVariable(name = "id") int id, Model model){
+        Member member = repository.selectMethodById(id);
+        model.addAttribute("member", member);
+        return "viewPage03_edit";
+    }
+
+    @PostMapping("/update")
+    public String updateMethod(@ModelAttribute("member") Member member){
+        repository.updateMethod(member.getName(), member.getAge(), member.getEmail(), member.getId());
+        return "redirect:/exam03";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteMethod(@PathVariable(name = "id") int id){
+        repository.deleteMethod(id);
+        return "redirect:/exam03";
+    }
 }
